@@ -26,27 +26,27 @@
 					<tbody>
 						<tr>
 							<td width="10%"><strong>Nome:</strong></td>
-							<td><?php echo $cliente->nome ?></td>
+							<td><?php echo $cliente->getNome() ?></td>
 						</tr>
 						<tr>
 							<td width="10%"><strong>CPF:</strong></td>
-							<td><?php echo $cliente->cpf ?></td>
+							<td><?php echo $cliente->getCpf() ?></td>
 						</tr>
 						<tr>
 							<td width="10%"><strong>Endereço:</strong></td>
-							<td><?php echo $cliente->rua . ', '.$cliente->bairro . ', '. $cliente->cidade . ' - ' .$cliente->estado ?></td>
+							<td><?php echo $cliente->getRua() . ', '.$cliente->getBairro() . ', '. $cliente->getCidade() . ' - ' .$cliente->getEstado() ?></td>
 						</tr>
 						<tr>
 							<td width="10%"><strong>Sexo:</strong></td>
-							<td><?php echo $cliente->sexo ?></td>
+							<td><?php echo $cliente->getSexo() ?></td>
 						</tr>
 						<tr>
 							<td width="10%"><strong>Celular:</strong></td>
-							<td><?php echo $cliente->celular ?></td>
+							<td><?php echo $cliente->getCelular() ?></td>
 						</tr>
 						<tr>
 							<td width="10%"><strong>E-mail:</strong></td>
-							<td><?php echo $cliente->email ?></td>
+							<td><?php echo $cliente->getEmail() ?></td>
 						</tr>
 					</tbody>
 				</table>

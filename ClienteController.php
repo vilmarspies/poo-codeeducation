@@ -1,6 +1,7 @@
 <?php 
 
-	include 'Cliente.php';
+	include 'ClienteFisico.php';
+	include 'ClienteJuridico.php';
 
 class ClienteController {
 
@@ -12,36 +13,36 @@ class ClienteController {
 
 		for ($i=1; $i<=10; $i++){
 			
-			$p = new Cliente();
+			$p = new ClienteFisico();
 
-			$p->id = $i;
-			$p->nome = "Cliente {$i}";
-			$p->cpf = "000.000.000-0{$i}";
-			$p->rua = "Rua {$i}";
-			$p->bairro = "Bairro {$i}";
-			$p->cidade = "Cidade {$i}";
-			$p->estado = "Estado {$i}";
-			$p->sexo = "Sexo {$i}";
-			$p->celular = "(45)9999-999{$i}";
-			$p->email = "{$i}@mail.com";
+			$p->setId($i);
+			$p->setNome("Cliente {$i}");
+			$p->setCpf("000.000.000-0{$i}");
+			$p->setRua("Rua {$i}");
+			$p->setBairro("Bairro {$i}");
+			$p->setCidade("Cidade {$i}");
+			$p->setEstado("Estado {$i}");
+			$p->setSexo("Sexo {$i}");
+			$p->setCelular("(45)9999-999{$i}");
+			$p->setEmail("{$i}@mail.com");
+			$p->setGrauImportancia(rand(1,5));
 
 			$this->clientes[] = $p;
 		}
 
-			$p = new Cliente();
+		$j = new ClienteJuridico();
+		$j->setId($i);
+			$j->setNome("Cliente Juridico 01");
+			$j->setCnpj("00.000.000/0001-00");
+			$j->setRua("Rua asdfasdf");
+			$j->setBairro("Bairro asdf");
+			$j->setCidade("Cidade teste");
+			$j->setEstado("Estado PR");
+			$j->setCelular("(45)9999-9990");
+			$j->setEmail("juridico@mail.com");
+			$j->setGrauImportancia(rand(1,5));
 
-			$p->id = 11;
-			$p->nome = "Teste ";
-			$p->cpf = "000.000.000-99";
-			$p->rua = "Av P ";
-			$p->bairro = "Bairro ";
-			$p->cidade = "Cidade ";
-			$p->estado = "Estado ";
-			$p->sexo = "Sexo ";
-			$p->celular = "(45)9999-999";
-			$p->email = "@mail.com";
-
-			$this->clientes[] = $p;
+			$this->clientes[] = $j;
 
 		return $this->clientes;
 	}
@@ -50,7 +51,7 @@ class ClienteController {
 	{
 		foreach ($this->getClientes() as $cliente) {
 			
-			if ($cliente->id == $id){
+			if ($cliente->getId() == $id){
 				return $cliente;
 			}
 		}

@@ -1,29 +1,30 @@
 <?php 
+
 require_once 'ClienteController.php';
 $ctrl = new ClienteController();
 
 $clientes = $ctrl->getClientes();
 
-$column = isset($_GET['column'])?$_GET['column']:'nome';
+$column = isset($_GET['column'])?$_GET['column']:'id';
 $order = isset($_GET['order'])?$_GET['order']:1;
 
 
 function orderNomeAsc($a, $b)
 {
-    return strcmp($a->nome, $b->nome);
+    return strcmp($a->getNome(), $b->getNome());
 }
 function orderRuaAsc($a, $b)
 {
-    return strcmp($a->rua, $b->rua);
+    return strcmp($a->getRua(), $b->getRua());
 }
 
 function orderNomeDesc($a, $b)
 {
-    return strcmp($b->nome, $a->nome);
+    return strcmp($b->getNome(), $a->getNome());
 }
 function orderRuaDesc($a, $b)
 {
-    return strcmp($b->rua, $a->rua);
+    return strcmp($b->getRua(), $a->getRua());
 }
 
 if ($column == 'nome')
@@ -36,7 +37,7 @@ if ($column == 'nome')
 		$order =1;
 	}
 }
-else{
+else if($column== 'rua'){
 	if($order == 1){
 		usort($clientes, 'orderRuaAsc');
 		$order = 0;
@@ -45,12 +46,6 @@ else{
 		$order =1;
 	}
 }
-/*usort($clientes, function($a, $b)
-{
-    return strcmp($b->rua, $a->rua);
-});*/
-
-
 
  ?>
 <!DOCTYPE html>
@@ -71,6 +66,8 @@ else{
 				<table class="table table-bordered table-hover table-striped">
 					<thead>
 						<tr>
+							<th>Fisico/Juridico</th>
+							<th>Id</th>
 							<th>
 								<a href="index.php?column=nome&order=<?php echo $order ?>">Nome 
 									<?php 
@@ -85,6 +82,7 @@ else{
 									?>
 								</a>
 							</th>
+							
 							<th>
 								<a href="index.php?column=rua&order=<?php echo $order ?>">Rua 
 								<?php 
@@ -100,18 +98,25 @@ else{
 
 								</a>
 							</th>
+							<th>
+								Estrelas
+							</th>
 							<th>Visualizar</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php  
-
-							foreach ($clientes as $cliente) {	?>
+							foreach ($clientes as $cliente) { ?>
 							<tr>
-								<td><?php echo $cliente->nome ?></td>
-								<td><?php echo $cliente->rua ?></td>
+								<td><?php if ($cliente instanceof ClienteFisico) {
+										echo "P";
+									}else{echo "J";}?></td>
+								<td><?php echo $cliente->getId(); ?></td>
+								<td><?php echo $cliente->getNome(); ?></td>
+								<td><?php echo $cliente->getRua(); ?></td>
+								<td><?php echo $cliente->getGrauImportancia(); ?></td>
 								<td>
-									<a href="<?php echo 'detalhes.php?id='.$cliente->id ?>"><span class="glyphicon glyphicon-eye-open"></span></a>
+									<a href="detalhes.php?id=<?php echo $cliente->getId() ?>"><span class="glyphicon glyphicon-eye-open"></span></a>
 								</td>
 							</tr>
 

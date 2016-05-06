@@ -1,28 +1,102 @@
 <?php
 
-class Cliente
+
+class Cliente 
 {
-	public $id;
-	public $nome;
-	public $cpf;
-	public $rua;
-	public $bairro;
-	public $cidade;
-	public $estado;
-	public $sexo;
-	public $celular;
-	public $email;
+	private $id;
+	private $nome;
+	private $rua;
+	private $bairro;
+	private $cidade;
+	private $estado;
+	private $celular;
+	private $email;
+	private $grauImportancia;
+	private $enderecoCobranca;
+
+
+	public function setId($id)
+	{
+		$this->id = $id;
+		return $this;
+	}
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	public function setNome($nome)
+	{
+		$this->nome = $nome;
+		return $this;
+	}
+	public function getNome()
+	{
+		return $this->nome;
+	}
+
+	public function setRua($rua)
+	{
+		$this->rua = $rua;
+		return $this;
+	}
+	public function getRua()
+	{
+		return $this->rua;
+	}
+
+	public function setBairro($bairro)
+	{
+		$this->bairro = $bairro;
+		return $this;
+	}
+	public function getBairro()
+	{
+		return $this->bairro;
+	}
+
+	public function setCidade($cidade)
+	{
+		$this->cidade = $cidade;
+		return $this;
+	}
+	public function getCidade()
+	{
+		return $this->cidade;
+	}
+
+	public function setEstado($estado)
+	{
+		$this->estado = $estado;
+		return $this;
+	}
+	public function getEstado()
+	{
+		return $this->estado;
+	}
+
+
+	public function setCelular($celular)
+	{
+		$this->celular = $celular;
+		return $this;
+	}
+	public function getCelular()
+	{
+		return $this->celular;
+	}
+
+	public function setEmail($email)
+	{
+		$this->email = $email;
+		return $this;
+	}
+
+	public function getEmail()
+	{
+		return $this->email;
+	}
+
+
 
 }
-
-/*
-- Crie uma classe com os principais atributos que um cliente deve ter, como nome, cpf, endereço, etc.
-
-- Crie um array de objetos de clientes, com 10 clientes dentro.
-
-- Crie uma página e faça a listagem geral dos clientes. Quando clicar sobre o cliente, você deverá mostrar os dados específicos do cliente selecionado.
-
-- Nessa listagem você também deverá ter a opção de ordenar os clientes pelo seu índice de forma ascendente e descendente.
-
-Não se esqueça de caprichar na interface utilizando o twitter bootstrap.
-*/
